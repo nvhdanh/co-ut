@@ -1,4 +1,5 @@
 import { Button, Grid, Paper, Typography } from '@mui/material'
+import { grey, orange } from '@mui/material/colors'
 import React from 'react'
 
 const OrderList = ({ orders, onDone, onDelete }) => {
@@ -53,11 +54,7 @@ const OrderList = ({ orders, onDone, onDelete }) => {
         orders
           .filter((order) => order.completed === false)
           .map((order) => (
-            <Paper
-              key={order.id}
-              elevation={1}
-              sx={{ padding: `10px 0`, marginTop: 1, background: `${order.completed === true ? '#ccc' : ''}` }}
-            >
+            <Paper key={order.id} elevation={1} sx={{ padding: `10px 0`, marginTop: 1 }}>
               <Grid container alignItems={'center'}>
                 <Grid item textAlign={'center'} xs={0.9}>
                   {order.ten}
@@ -107,14 +104,18 @@ const OrderList = ({ orders, onDone, onDelete }) => {
           ))}
       {!!orders.length && (
         <Typography textAlign={'center'} sx={{ my: 2 }}>
-          Đã hoàn thành ({orders.reduce((total, order) => total + +order.price, 0)}.000 đ)
+          Đã hoàn thành ({orders.filter((order) => order.completed === true).reduce((total, order) => total + +order.price, 0)}.000 đ)
         </Typography>
       )}
       {!!orders.length &&
         orders
           .filter((order) => order.completed === true)
           .map((order) => (
-            <Paper key={order.id} elevation={1} sx={{ padding: `10px 0`, marginTop: 1, background: order.completed && '#eee' }}>
+            <Paper
+              key={order.id}
+              elevation={1}
+              sx={{ padding: `10px 0`, marginTop: 1, background: (theme) => (theme.palette.mode === 'dark' ? grey[800] : grey[100]) }}
+            >
               <Grid container alignItems={'center'}>
                 <Grid item textAlign={'center'} xs={0.9}>
                   {order.ten}

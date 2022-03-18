@@ -1,22 +1,18 @@
 import { CssBaseline } from '@mui/material'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-})
+import { DarkProvider } from './contexts/theme.context'
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <DarkProvider>
         <CssBaseline />
         <App />
-      </ThemeProvider>
+      </DarkProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

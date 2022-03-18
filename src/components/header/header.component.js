@@ -14,7 +14,7 @@ const Header = () => {
         </Grid>
         <Grid>
           <FormGroup>
-            <FormControlLabel control={<Switch onChange={toggleMode} />} label={`${darkMode ? 'Tối' : 'Sáng'}`} />
+            <FormControlLabel control={<Switch onChange={toggleMode} checked={darkMode} />} label={`${darkMode ? 'Tối' : 'Sáng'}`} />
           </FormGroup>
         </Grid>
       </Grid>

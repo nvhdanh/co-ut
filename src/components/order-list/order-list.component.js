@@ -1,5 +1,5 @@
 import { Button, Grid, Paper, Typography } from '@mui/material'
-import { grey, orange } from '@mui/material/colors'
+import { grey } from '@mui/material/colors'
 import React from 'react'
 
 const OrderList = ({ orders, onDone, onDelete }) => {
